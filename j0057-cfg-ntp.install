@@ -1,0 +1,14 @@
+post_install() {
+    cp /etc/ntp.conf /etc/ntp.conf.dist
+    ln -f /etc/ntp.conf.j0057 /etc/ntp.conf
+
+    systemctl enable --now ntpd.service
+}
+
+pre_remove() {
+    systemctl disable --now ntpd.service
+}
+
+post_remove() {
+    mv /etc/ntp.conf.dist /etc/ntp.conf
+}

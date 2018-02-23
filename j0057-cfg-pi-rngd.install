@@ -1,0 +1,14 @@
+post_install() {
+    cp /etc/conf.d/rngd /etc/conf.d/rngd.dist
+    ln -f /etc/conf.d/rngd.j0057 /etc/conf.d/rngd
+
+    systemctl enable --now rngd.service
+}
+
+pre_remove() {
+    systemctl disable --now rngd.service
+}
+
+post_remove() {
+    mv /etc/conf.d/rngd.dist /etc/conf.d/rngd
+}

@@ -1,0 +1,14 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = ntp
+
+[Trigger]
+Operation = Upgrade
+Type = File
+Target = /etc/ntp.conf
+Target = /etc/ntp.conf.j0057
+
+[Action]
+When = PostTransaction
+Exec = systemctl restart ntpd.service

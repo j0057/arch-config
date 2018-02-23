@@ -1,0 +1,8 @@
+post_install() {
+    cp /etc/vimrc /etc/vimrc.dist
+    ln -f /etc/vimrc.j0057 /etc/vimrc
+}
+
+post_remove() {
+    mv /etc/vimrc.dist /etc/vimrc
+}
